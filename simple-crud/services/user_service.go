@@ -13,7 +13,7 @@ func NewUserService(db *storage.UserDb) *UserService {
 	return &UserService{db: db}
 }
 
-func (s *UserService) CreateUser(user models.User) models.ID {
+func (s *UserService) CreateUser(user models.User) (models.ID, error) {
 	return s.db.AddUser(user)
 }
 

@@ -21,6 +21,8 @@ func NewUserHandler(service *services.UserService, validator *validators.UserVal
 }
 
 func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
 	var user models.User
 	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 		utils.SendJson(
@@ -42,8 +44,17 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	id := h.service.CreateUser(user)
-	w.Header().Set("Content-Type", "application/json")
+	id, err := h.service.CreateUser(user)
+
+	if err != nil {
+		utils.SendJson(
+			w,
+			utils.Response{Error: "internal server error"},
+			http.StatusInternalServerError,
+		)
+		return
+	}
+
 	utils.SendJson(
 		w,
 		utils.Response{Data: map[string]string{"id": string(id)}},

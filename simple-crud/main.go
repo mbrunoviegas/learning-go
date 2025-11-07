@@ -27,7 +27,6 @@ func main() {
 	)
 
 	app.Run()
-
 }
 
 func registerRoutes(handler *handlers.UserHandler) {
