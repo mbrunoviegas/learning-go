@@ -1,0 +1,17 @@
+name: learning-go
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: learning_go
+    volumes:
+      - db-data:/var/lib/postgresql
+
+volumes:
+  db-data:
+    driver: local
