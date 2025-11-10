@@ -1,4 +1,4 @@
-name: learning-go
+name: simple-crud
 services:
   db:
     image: postgres
@@ -10,8 +10,8 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: learning_go
     volumes:
-      - db-data:/var/lib/postgresql
+      - db:/var/lib/postgresql
 
 volumes:
-  db-data:
+  db:
     driver: local
