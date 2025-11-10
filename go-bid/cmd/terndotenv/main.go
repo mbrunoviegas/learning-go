@@ -28,6 +28,5 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(err, output)
 	fmt.Println("Command executed successfully ", string(output))
 }

@@ -11,6 +11,8 @@ require (
 	golang.org/x/crypto v0.42.0
 )
 
+require github.com/gorilla/websocket v1.5.3 // indirect
+
 require (
 	github.com/alexedwards/scs/pgxstore v0.0.0-20251002162104-209de6e426de
 	github.com/jackc/pgpassfile v1.0.0 // indirect
